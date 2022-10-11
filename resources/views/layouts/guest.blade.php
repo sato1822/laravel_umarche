@@ -14,7 +14,7 @@
         {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
         <!-- Styles -->
 
-        
+
         {{-- 最初からviteが使われている場合は変更する必要がある --}}
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <!-- Scripts -->
