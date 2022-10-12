@@ -6,6 +6,7 @@ use Illuminate\View\Component;
 
 class TestClassBase extends Component
 {
+  //まずは値を指定する
     public $classBaseMessage;
     public $defaultMessage;
     /**
@@ -15,7 +16,7 @@ class TestClassBase extends Component
      */
     public function __construct($classBaseMessage, $defaultMessage='初期値です')
     {
-        $this->classBaseMessage = $classBaseMessage;
+        $this->classBaseMessage = $classBaseMessage;//クラス別での初期値、属性の引き渡しはこのようにして行う必要がある
         $this->defaultMessage = $defaultMessage;
     }
 
