@@ -6,6 +6,14 @@ use Illuminate\Http\Request;
 
 class LifeCycleTestController extends Controller
 {
+    public function showServiceProviderTest()
+    {
+      $encrypt = app()->make('encrypter');
+      $password = $encrypt->encrypt('password');//暗号化している
+      $sample = app()->make('serviceProviderTest');
+      dd($sample, $password, $encrypt->decrypt($password));//元のパスワードに戻す
+    }
+
     public function showServiceContainerTest()
     {
       app()->bind('lifeCycleTest', function(){
@@ -31,7 +39,9 @@ class LifeCycleTestController extends Controller
 class Sample
 {
   public $message;
-  public function __construct(Message $message)//DIという仕組みでインスタンス化しなくても使える仕組みになる
+  public function __construct(Message $message)
+  //DIという仕組みでインスタンス化しなくても使える仕組みになる
+  //要するに最初に来るのはインスタンス化するクラス名であり二つ目にはそれを引数といて保管している状態になる
   {
     $this->message = $message;
   }
