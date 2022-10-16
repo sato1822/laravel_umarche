@@ -772,6 +772,9 @@ select {
 .w-28 {
   width: 7rem;
 }
+.w-12 {
+  width: 3rem;
+}
 .max-w-6xl {
   max-width: 72rem;
 }
@@ -939,6 +942,9 @@ select {
 .p-2 {
   padding: 0.5rem;
 }
+.p-4 {
+  padding: 1rem;
+}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1033,6 +1039,9 @@ select {
 }
 .font-semibold {
   font-weight: 600;
+}
+.font-bold {
+  font-weight: 700;
 }
 .uppercase {
   text-transform: uppercase;
