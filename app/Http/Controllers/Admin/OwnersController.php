@@ -1,18 +1,16 @@
 <?php
+//php artisan make;controller Admin/OwnersController --resource とするCRUD機能を作ることができる
 
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;//クエリビルダー 
+use App\Models\Owner;//エロクアント
+use Carbon\Carbon;
 
 class OwnersController extends Controller
-{
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    
+{   
     public function __construct()
     {
       $this->middleware('auth:admin');
@@ -20,7 +18,23 @@ class OwnersController extends Controller
 
     public function index()
     {
-        dd('オーナー一覧です');
+      $data_now = Carbon::now();
+      $data_parse = Carbon::parse(now());
+      echo $data_now->year;
+      echo $data_parse;
+
+      $e_all = Owner::all();//エロクアント
+      $q_get = DB::table('owners')->select('name', 'created_at')->get();//クエリビルダー
+      //$q_first = DB::table('owners')->select('name')->first();
+
+      // $c_test = collect([
+      //   'name' => 'てすと',
+      // ]);
+
+      // var_dump($q_first);
+
+      // dd($e_all, $q_get, $q_first, $c_test);
+      return view('admin.owners.index', compact('e_all', 'q_get'));
     }
 
     /**

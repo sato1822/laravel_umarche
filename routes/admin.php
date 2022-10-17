@@ -26,7 +26,7 @@ Route::get('/', function () {
     return view('admin.welcome');
 })->middleware('auth:admin');
 
-Route::resource('owners', OwnersController::class);
+Route::resource('owners', OwnersController::class);//resourceとすることでCRUD機能をに行うことができる
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
