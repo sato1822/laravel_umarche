@@ -22,9 +22,9 @@ use App\Http\Controllers\Admin\OwnersController;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.welcome');
-})->middleware('auth:admin');
+// Route::get('/', function () {
+//     return view('admin.welcome');
+// })->middleware('auth:admin');
 
 Route::prefix('expired-owners')->
 middleware('auth:admin')->
@@ -33,7 +33,9 @@ group(function() {
   Route::post('destroy/{owner}', [OwnersController::class, 'expiredOwnerDestroy'])->name('expired-owners.destroy');
 });
 
-Route::resource('owners', OwnersController::class);//resourceとすることでCRUD機能をに行うことができる
+Route::resource('owners', OwnersController::class)->middleware('auth:admin')->except(['show']);
+//resourceとすることでCRUD機能をに行うことができる
+//exceptメソッドで使っていないメソッドを省くことができる
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
