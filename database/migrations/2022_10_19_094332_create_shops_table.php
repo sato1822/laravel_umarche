@@ -15,11 +15,14 @@ class CreateShopsTable extends Migration
     {
         Schema::create('shops', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('owner_id')->constrained();//これで外部キーの制約になる。今回であればオーナーのidとなる
+            $table->foreignId('owner_id')
+            ->constrained()
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
             $table->string('name');
             $table->string('information');
             $table->string('filename');
-            $table->boolean('is_seeling');
+            $table->boolean('is_selling');
             $table->timestamps();
         });
     }

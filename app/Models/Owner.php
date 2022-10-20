@@ -44,6 +44,6 @@ class Owner extends Authenticatable
 
   public function shop()
   {
-    return $this->hasOne(Shop::class);
+    return $this->hasOne(Shop::class);// リレーション 1対1の設定方法(エロクアント) 計2ヶ所
   }
 }

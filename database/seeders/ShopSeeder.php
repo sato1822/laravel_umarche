@@ -20,7 +20,7 @@ class ShopSeeder extends Seeder
           'name' => 'ここに店名が入ります',
           'information' => 'ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。',
           'filename' => '',
-          'is_seeling'=> true,
+          'is_selling'=> true,
         ],
 
         [
@@ -28,7 +28,7 @@ class ShopSeeder extends Seeder
           'name' => 'ここに店名が入ります',
           'information' => 'ここにお店の情報が入ります。ここにお店の情報が入ります。ここにお店の情報が入ります。',
           'filename' => '',
-          'is_seeling'=> true,
+          'is_selling'=> true,
         ],
       ]);
     }
