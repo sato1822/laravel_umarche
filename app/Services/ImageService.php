@@ -10,9 +10,9 @@ class ImageService
   public static function upload($imageFile, $folderName)//staticとすることで他のクラスでもつかうことができる
   {
     // dd($imageFile['image']);
-    if(is_array($imageFile))
+    if(is_array($imageFile))//複数の取得かどうかを判別している
     {
-      $file = $imageFile['image'];
+      $file = $imageFile['image'];//['image']のキーをつけることにより複数で選択して画像を取得することができる
     } else{
       $file = $imageFile;
     }

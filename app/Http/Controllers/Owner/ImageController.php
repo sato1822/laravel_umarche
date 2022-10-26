@@ -32,7 +32,7 @@ class ImageController extends Controller
     public function index()
     {
       $images = Image::where('owner_id', Auth::id())
-      ->orderBy('created_at', 'desc')//取得して表示される順番が逆になる
+      ->orderBy('updated_at', 'desc')//取得して表示される順番が逆になる
       ->paginate(20);
       return view('owner.images.index', compact('images'));
     }
@@ -71,16 +71,6 @@ class ImageController extends Controller
         ->with(['message' => '画像登録を実施しました。','status' => 'info']);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
     /**
      * Show the form for editing the specified resource.
@@ -90,7 +80,9 @@ class ImageController extends Controller
      */
     public function edit($id)
     {
-        //
+      $image = Image::findOrFail($id);
+      // dd(Shop::FindOrFail($id));
+      return view('owner.images.edit', compact('image'));
     }
 
     /**
@@ -102,7 +94,17 @@ class ImageController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $request->validate([
+        'title' => ['string', 'max:50'],
+      ]);
+
+      $image = Image::findOrFail($id);
+      $image->title = $request->title;
+      $image->save();
+
+      return redirect()
+      ->route('owner.images.index')
+      ->with(['message' => '画像情報を更新しました。','status' => 'info']);
     }
 
     /**
