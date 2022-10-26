@@ -50,6 +50,6 @@ class Owner extends Authenticatable
 
   public function image()
   {
-    return $this->hasMany(Image::class);// リレーション 1対1の設定方法(エロクアント) 計2ヶ所
+    return $this->hasMany(Image::class);
   }
 }

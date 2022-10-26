@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Owner;
 
 use App\Http\Controllers\Controller;
-use App\Models\Image;
 use Illuminate\Http\Request;
+use App\Models\Image;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UploadImageRequest;
 use App\Services\ImageService;
@@ -29,6 +29,7 @@ class ImageController extends Controller
       return $next($request);
   });
   }
+
     public function index()
     {
       $images = Image::where('owner_id', Auth::id())
