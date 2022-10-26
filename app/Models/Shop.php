@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\product;
 use App\Models\Owner;
 
 class Shop extends Model
@@ -21,5 +22,10 @@ class Shop extends Model
     public function owner()
     {
       return $this->belongsTo(Owner::class);//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
+    }
+
+    public function product()
+    {
+      return $this->hasMany(Product::class);//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
     }
 }
