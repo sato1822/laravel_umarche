@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Image;
 use App\Models\Product;
-use App\Models\SecondaryCategory;
+use App\Models\Shop;
+use App\Models\PrimaryCategory;
 use App\Models\Owner;
 
 class ProductController extends Controller
@@ -38,20 +39,9 @@ class ProductController extends Controller
         $ownerInfo = Owner::with('shop.product.imageFirst')
         //読み込む際にリレーションしているsqlまで読み込んでしまいうのを防ぐために
         //Eager loadingを使い一つにまとめて取得するkとおにより重諷誦するのを防ぐことができる
-
         ->where('id', Auth::id())
         ->get();
-
-        // dd($ownerInfo);
-        // foreach($ownerInfo as $owner)
-        // {
-        //   // dd($owner);
-        //   foreach($owner->shop->product as $product)
-        //   {
-        //     dd($product->imageFirst->filename);
-        //   }
-        // }
-
+        
         return view('owner.products.index', 
         compact('ownerInfo'));
     }
@@ -63,7 +53,20 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $shop = Shop::where('owner_id', Auth::id())
+        ->select('id', 'name')
+        ->get();
+
+        $image = Image::where('owner_id', Auth::id())
+        ->select('id', 'title', 'filename')
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+        $categories = PrimaryCategory::with('secondary')
+        ->get();
+
+        return view('owner.products.create',
+        compact('shop', 'image', 'categories'));
     }
 
     /**
