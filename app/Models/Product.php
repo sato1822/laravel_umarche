@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Shop;
 use App\Models\SecondaryCategory;
 use App\Models\Image;
+use App\Models\Stock;
 
 class Product extends Model
 {
@@ -26,4 +27,9 @@ class Product extends Model
     {
       return $this->belongsTo(Image::class, 'image1', 'id');//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
     }
-}
+    
+    public function stock()
+    {
+        return $this->hasMany(Stock::class);
+    }
+  }

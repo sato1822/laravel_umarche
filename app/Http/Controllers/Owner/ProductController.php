@@ -36,13 +36,16 @@ class ProductController extends Controller
         // ->shop->product;
 
         $ownerInfo = Owner::with('shop.product.imageFirst')
+        //読み込む際にリレーションしているsqlまで読み込んでしまいうのを防ぐために
+        //Eager loadingを使い一つにまとめて取得するkとおにより重諷誦するのを防ぐことができる
+
         ->where('id', Auth::id())
         ->get();
 
-        // //dd($ownerInfo);
+        // dd($ownerInfo);
         // foreach($ownerInfo as $owner)
         // {
-        //   // dd($owner->shop->product);
+        //   // dd($owner);
         //   foreach($owner->shop->product as $product)
         //   {
         //     dd($product->imageFirst->filename);
