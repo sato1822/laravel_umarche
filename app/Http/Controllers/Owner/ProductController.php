@@ -53,7 +53,7 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $shop = Shop::where('owner_id', Auth::id())
+        $shops = Shop::where('owner_id', Auth::id())
         ->select('id', 'name')
         ->get();
 
@@ -66,7 +66,7 @@ class ProductController extends Controller
         ->get();
 
         return view('owner.products.create',
-        compact('shop', 'images', 'categories'));
+        compact('shops', 'images', 'categories'));
     }
 
     /**
