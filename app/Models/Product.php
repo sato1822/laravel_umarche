@@ -41,6 +41,18 @@ class Product extends Model
     {
       return $this->belongsTo(Image::class, 'image1', 'id');//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
     }
+    public function imageSecond()
+    {
+      return $this->belongsTo(Image::class, 'image2', 'id');//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
+    }
+    public function imageThird()
+    {
+      return $this->belongsTo(Image::class, 'image3', 'id');//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
+    }
+    public function imageFourth()
+    {
+      return $this->belongsTo(Image::class, 'image4', 'id');//リレーション 1対1の設定方法(エロクアント) 計2ヶ所
+    }
     
     public function stock()
     {
