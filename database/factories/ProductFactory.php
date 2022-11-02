@@ -11,6 +11,7 @@ class ProductFactory extends Factory
      *
      * @return array
      */
+
     public function definition()
     {
       return [
